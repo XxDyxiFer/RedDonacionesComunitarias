@@ -1,15 +1,18 @@
+
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ListaDonaciones from "./pages/ListaDonaciones";
 
-function RoutesComponent() {
+function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/donaciones" element={<ListaDonaciones />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/donaciones" element={<ListaDonaciones />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default RoutesComponent;
+export default AppRoutes;

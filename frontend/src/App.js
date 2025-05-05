@@ -1,12 +1,12 @@
+// src/App.js
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import RoutesComponent from "./routes";
+import AppRoutes from "./routes"; // o "./RoutesComponent" si lo nombraste así
 
 function App() {
   return (
-    <Router>
-      <RoutesComponent />
-    </Router>
+    <div>
+      <AppRoutes />
+    </div>
   );
 }
 
