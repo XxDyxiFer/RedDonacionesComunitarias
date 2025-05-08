@@ -1,12 +1,12 @@
-// src/App.js
-import React from "react";
-import AppRoutes from "./routes"; // o "./RoutesComponent" si lo nombraste así
+import Navbar from './components/Navbar';
+import AppRoutes from './routes';
 
 function App() {
   return (
-    <div>
+    <>
+      <Navbar />
       <AppRoutes />
-    </div>
+    </>
   );
 }
 

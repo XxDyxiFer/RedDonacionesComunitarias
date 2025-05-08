@@ -1,11 +1,8 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+const Home = () => (
+  <div>
+    <h1>Bienvenido a Red de Donaciones Comunitarias</h1>
+    <p>Conecta personas que desean ayudar con quienes más lo necesitan.</p>
+  </div>
+);
 
-export default function Home() {
-  return (
-    <div>
-      <Navbar />
-      <h1>Bienvenido a la Red de Donaciones Comunitarias</h1>
-    </div>
-  );
-}
+export default Home;

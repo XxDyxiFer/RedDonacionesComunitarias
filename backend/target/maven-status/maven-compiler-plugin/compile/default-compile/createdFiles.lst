@@ -1,0 +1,5 @@
+com\reddonaciones\controller\UsuarioController.class
+com\reddonaciones\service\UsuarioService.class
+com\reddonaciones\repository\UsuarioRepository.class
+com\reddonaciones\model\Usuario.class
+com\reddonaciones\RedDonacionesComunitariasApplication.class
