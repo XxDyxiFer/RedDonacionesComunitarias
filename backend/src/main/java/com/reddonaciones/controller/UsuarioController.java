@@ -24,3 +24,11 @@ public class UsuarioController {
         return usuarioService.guardarUsuario(usuario);
     }
 }
+@RestController
+@RequestMapping("/api/donaciones")
+public class DonacionController {
+    @GetMapping
+    public List<Donacion> listarDonaciones() {
+        return donacionService.listarTodos();
+    }
+}

@@ -7,3 +7,30 @@ nav {
   background: #f4f4f4;
   padding: 10px;
 }
+.btn-donar {
+  background: #FF6B6B;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+.btn-donar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.tabla-donaciones {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabla-donaciones th, .tabla-donaciones td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.btn-solicitar {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
