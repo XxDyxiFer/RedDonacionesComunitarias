@@ -1,42 +1,52 @@
+// RegistroUsuario.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Necesitas instalar axios si no lo has hecho
 
-const RegistroUsuario = () => {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    correo: '',
-    contraseña: ''
-  });
+function RegistroUsuario() {
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleRegistro = async (e) => {
     e.preventDefault();
-    console.log('Datos registrados:', formData);
-    alert('Usuario registrado (simulado)');
+    try {
+      const response = await axios.post('http://localhost:8080/api/usuarios/registro', {
+        nombre,
+        correo,
+        contrasena
+      });
+
+      if (response.status === 201 || response.status === 200) {
+        alert('Registro exitoso');
+        navigate('/perfil'); // Redirige al perfil después del registro
+      } else {
+        alert('Error al registrar usuario');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error en el servidor o datos inválidos');
+    }
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div>
       <h2>Registro de Usuario</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre:</label><br />
-          <input type="text" name="nombre" onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Correo:</label><br />
-          <input type="email" name="correo" onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Contraseña:</label><br />
-          <input type="password" name="contraseña" onChange={handleChange} required />
-        </div>
-        <button type="submit" style={{ marginTop: '1rem' }}>Registrarse</button>
+      <form onSubmit={handleRegistro}>
+        <label>Nombre:</label>
+        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        
+        <label>Correo:</label>
+        <input type="email" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+        
+        <label>Contraseña:</label>
+        <input type="password" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required />
+        
+        <button type="submit">Registrarse</button>
       </form>
     </div>
   );
-};
+}
 
 export default RegistroUsuario;
