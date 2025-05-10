@@ -3,6 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './assets/styles/global.css'; // ✅ Importación corregida
+import RegistroUsuario from './pages/RegistroUsuario';
+import ListaDonaciones from './pages/ListaDonaciones'; // o Donaciones
+
 
 function Home() {
   return (
@@ -31,12 +34,12 @@ function App() {
         <Link to="/registro">Registro</Link>
         <Link to="/donaciones">Donaciones</Link>
       </nav>
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/registro" element={<RegistroUsuario />} />
+  <Route path="/donaciones" element={<ListaDonaciones />} />
+</Routes>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Puedes agregar más rutas, como: */}
-        {/* <Route path="/registro" element={<RegistroUsuario />} /> */}
-      </Routes>
     </Router>
   );
 }
