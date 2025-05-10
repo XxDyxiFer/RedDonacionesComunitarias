@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import './App.css';
+import './assets/styles/global.css'; // ✅ Importación corregida
 
 function Home() {
   return (
@@ -15,7 +15,6 @@ function Home() {
 }
 
 function App() {
-  // Ejemplo de uso de Axios
   const fetchDonations = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/donaciones');
@@ -32,10 +31,11 @@ function App() {
         <Link to="/registro">Registro</Link>
         <Link to="/donaciones">Donaciones</Link>
       </nav>
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Agrega más rutas aquí */}
+        {/* Puedes agregar más rutas, como: */}
+        {/* <Route path="/registro" element={<RegistroUsuario />} /> */}
       </Routes>
     </Router>
   );
