@@ -1,45 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RegistrarDonacion from './RegistrarDonacion';
 
 function ListaDonaciones() {
-  // Datos de ejemplo (deberías reemplazarlos con datos reales backend)
-  const donaciones = [
-    {
-      id: 1,
-      nombre: "Caja de alimentos",
-      descripcion: "Contiene arroz, frijoles y aceite",
-      categoria: "Alimentos",
-      estado: "Disponible",
-      fechaExpiracion: "2023-12-31"
-    },
-    // Agregare más donaciones según sea necesario
-  ];
+  const [donaciones, setDonaciones] = useState([]);
+
+  const agregarDonacion = (nueva) => {
+    setDonaciones([...donaciones, { ...nueva, id: donaciones.length + 1 }]);
+  };
 
   return (
-    <div className="donaciones-container">
-      <div className="filtros">
-        <select>
-          <option>Categoría (Alimentos, Ropa, etc.)</option>
-        </select>
-        <input type="text" placeholder="Buscar por nombre..." />
-      </div>
-      <table className="tabla-donaciones">
+    <div>
+      <RegistrarDonacion onAgregar={agregarDonacion} />
+
+      <h2>Donaciones Disponibles</h2>
+      <table>
         <thead>
           <tr>
             <th>Objeto</th>
             <th>Descripción</th>
             <th>Categoría</th>
             <th>Estado</th>
-            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {donaciones.map((donacion) => (
-            <tr key={donacion.id}>
-              <td>{donacion.nombre}</td>
-              <td>{donacion.descripcion}</td>
-              <td>{donacion.categoria}</td>
-              <td>{donacion.estado}</td>
-              <td><button className="btn-solicitar">Solicitar</button></td>
+          {donaciones.map((d) => (
+            <tr key={d.id}>
+              <td>{d.nombre}</td>
+              <td>{d.descripcion}</td>
+              <td>{d.categoria}</td>
+              <td>{d.estado}</td>
             </tr>
           ))}
         </tbody>
